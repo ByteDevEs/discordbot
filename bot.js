@@ -1,26 +1,26 @@
-//ESTE CODIGO NO AFECTARA SU BOT, SCRIPT DE ARRANQUE
+const Discord = require('discord.js');
 
-const http = require('http');
-const express = require('express');
-const app = express();
+const client = new Discord.Client();
 
-//
-app.use(express.static('private'));
+ 
 
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+client.on('ready', () => {
+
+    console.log('I am ready!');
+
 });
 
-app.get("/", (request, response) => {
-  response.sendStatus(200);
+ 
+
+client.on('message', message => {
+
+    if (message.content === 'ping') {
+
+       message.reply('pong');
+
+       }
+
 });
-
-app.listen(process.env.PORT);
-
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`); 
-}, 280000);
-
 
 //DESDE AQUI EMPIEZA A ESCRIBIR EL CODIGO PARA SU BOT
 const Discord = require("discord.js");
